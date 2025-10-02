@@ -10,6 +10,7 @@ A comprehensive educational implementation of a small-scale language model based
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Alignment (ORPO)](#alignment-orpo)
 - [Model Specifications](#model-specifications)
 - [Training Process](#training-process)
 - [Dataset](#dataset)
@@ -131,6 +132,26 @@ ipdb>=0.13.0
    - Initialize the model
    - Start training
    - Generate text
+
+## Alignment (ORPO)
+
+This repository also includes an alignment notebook that demonstrates ORPO (Odds Ratio Preference Optimization) on a more capable Llama-style model (~138M parameters).
+
+### What it does
+- Applies ORPO alignment to improve preference-following behavior
+- Uses the `mlabonne/orpo-dpo-mix-40k` dataset (chosen vs rejected pairs)
+- Logs metrics with Weights & Biases (optional)
+
+### Requirements
+- GPU: 4GB+ VRAM recommended
+- PyTorch with CUDA (or Apple Metal on macOS)
+
+### Run the notebook
+```bash
+jupyter notebook align_llm_official.ipynb
+```
+
+On first run the notebook will download needed assets (model checkpoint, tokenizer, and dataset encodings). The notebook includes clear comments for each step: dataset filtering and preprocessing, model loading, ORPO odds ratio computation, loss composition, logging, and checkpointing.
 
 ### Training Configuration
 
